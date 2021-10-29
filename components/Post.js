@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import CategoryLabel from "@/components/CategoryLabel";
 
-export default function Post({post, key}) {
+export default function Post({post}) {
   return (
     <div
-      key={key}
       className="w-full px-10 py-6 bg-white rounded-lg shadow-md mt-6"
     >
       <Image
@@ -18,9 +18,9 @@ export default function Post({post, key}) {
         <span className="font-ligth text-grey-600">
           {post.frontmatter.date}
         </span>
-        <div>
+        <CategoryLabel >
           {post.frontmatter.category}
-        </div>
+        </CategoryLabel>
       </div>
       <div className="mt-2">
         <Link href={`/blog/${post.slug}`}>

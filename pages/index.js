@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import Post from "@/components/Post";
-
+import {sortByDate} from "@/utils/index";
 
 export default function HomePage({posts}) {
   return (
@@ -15,11 +15,9 @@ export default function HomePage({posts}) {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {
-          posts.map((post, index)=>{
-            return (
+          posts.map((post, index)=>
               <Post key={index} post={post} />
-            )
-          })
+           )
         }
       </div>
       <Link href='/blog'>
@@ -54,7 +52,7 @@ export async function getStaticProps({}) {
 
   return {
     props: {
-      posts
+      posts: posts.sort(sortByDate).slice(0, 6)
     }
   }
 }
