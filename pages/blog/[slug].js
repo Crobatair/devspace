@@ -1,11 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import marked from 'marked';
 import Link from 'next/link';
-
 import Layout from "@/components/Layout";
 import CategoryLabel from "@/components/CategoryLabel";
+import {getPost, getPostsPaths} from "@/lib/posts";
 
 export default function PostPage({frontmatter: {title, category, date, cover_image, author, author_image}, content, slug}) {
   return(
@@ -47,29 +44,16 @@ export default function PostPage({frontmatter: {title, category, date, cover_ima
 
 
 export async function getStaticPaths({}){
-  const files = fs.readdirSync(path.join('posts'))
-  const paths = files.map((filename) => {
-    return {
-      params: {
-        slug: filename.replace('.md', '')
-      }
-    }
-  })
-
   return {
-    paths,
+    paths: getPostsPaths(),
     fallback: false
   }
 }
 
 export async function getStaticProps({params: { slug }}) {
-
-  const markDownWithMeta = fs.readFileSync(path.join('posts', `${slug}.md`), 'utf8');
-  const { data: frontmatter, content} = matter(markDownWithMeta);
   return {
     props: {
-      frontmatter,
-      content,
+      ...getPost(slug),
       slug
     }
   }
