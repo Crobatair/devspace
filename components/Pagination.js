@@ -29,7 +29,7 @@ export default function Pagination({currentPage, numPages}) {
             return <Link key={index} href={`/blog/page/${index+1}`}>
               <a>
                 <li className={`relative block py-2 px-3 leading-tight ${(currentPage===index+1)?`bg-gray-200`:`bg-white` } border border-gray-300 text-gray-800 mr-1 hover:bg-gray-200 cursor-pointer`}>
-                  index + 1
+                  {index + 1}
                 </li>
               </a>
             </Link>
