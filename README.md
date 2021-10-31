@@ -1,31 +1,67 @@
+# DevSpace static Blog, with nextjs & vercel deployment service.
+
+This repository, is to create the projects studied while learning about NextJs and Strapi, on course [Next.js Udemy course](https://www.udemy.com/course/nextjs-dev-to-deployment)
+
+
+![DevSpace Blog](/public/images/showcase.png 'DevSpace Blog')
+
+
+This project, it's a static website, that generate static routes for each Blog posted on the site.
+The posts are generated from Markdown files, formatted as frontmatter & cont. Where the frontmatter is metadata related to blog rendering and content, that holds the data of the post itself.
+
+The site contains a serverless function, that filter all the posts, and the user can searh for a prefference topic. This
+
+[VIEW DEMO](https://customevents.vercel.app/)
+
+# Screenshots of the site running...
+
+#### Seach
+![Search Bar](/public/images/searchShowCase.png 'Search Blogs')
+
+#### Show Blog entries by Category
+![Categories](/public/images/categoriesShowCase.png 'Categories')
+
+#### Show Blog entries by Category
+![Blog page](/public/images/readMoreShowCase.png 'Blog Page')
+
+
+## Project Structure:
+
+```javascript
+/**
+    /pages
+        - All pages for the blog
+        - /api
+            - Serverless function, to perform the search posts action.
+        
+    /scripts
+        - Scripts for create cache data accessible from the serverless function.
+    /public
+        - Images for the blog
+        - Styles for the blog
+    /posts
+        - Markdown files for the blog
+    /cache
+        - Cache data for the blog, to perform searchs on the serverless function
+        
+*/
+```
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+### Backend preparations.
+First, run the development server for backend:
 
 ```bash
-npm run dev
-# or
-yarn dev
+
+$ git clone git@github.com:Crobatair/devspace.git
+$ npm install
+$ touch .env
+$ npm run dev
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/search.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
